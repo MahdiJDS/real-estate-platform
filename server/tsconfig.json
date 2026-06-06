@@ -1,44 +1,61 @@
 {
-  // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
-    // File Layout
-    // "rootDir": "./src",
-    // "outDir": "./dist",
+    /* ========================
+       BASIC SETUP
+    ======================== */
 
-    // Environment Settings
-    // See also https://aka.ms/tsconfig/module
-    "module": "nodenext",
-    "target": "esnext",
-    "types": [],
-    // For nodejs:
-    // "lib": ["esnext"],
-    // "types": ["node"],
-    // and npm install -D @types/node
+    "target": "ES2020",
+    "module": "CommonJS",
 
-    // Other Outputs
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
+    /* ========================
+       PROJECT STRUCTURE
+    ======================== */
 
-    // Stricter Typechecking Options
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
+    "rootDir": "./src",
+    "outDir": "./dist",
 
-    // Style Options
-    // "noImplicitReturns": true,
-    // "noImplicitOverride": true,
-    // "noUnusedLocals": true,
-    // "noUnusedParameters": true,
-    // "noFallthroughCasesInSwitch": true,
-    // "noPropertyAccessFromIndexSignature": true,
+    /* ========================
+       TYPE CHECKING
+    ======================== */
 
-    // Recommended Options
     "strict": true,
-    "jsx": "react-jsx",
-    "verbatimModuleSyntax": true,
-    "isolatedModules": true,
-    "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force",
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+
+    "exactOptionalPropertyTypes": true,
+    "noUncheckedIndexedAccess": true,
+
+    /* ========================
+       MODULE RESOLUTION
+    ======================== */
+
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    /* ========================
+       NODE SUPPORT
+    ======================== */
+
+    "types": ["node"],
     "skipLibCheck": true,
-  }
+
+    /* ========================
+       OUTPUT OPTIONS
+    ======================== */
+
+    "sourceMap": true,
+    "declaration": false,
+
+    /* ========================
+       CLEAN IMPORTS
+    ======================== */
+
+    "forceConsistentCasingInFileNames": true
+  },
+
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
 }
