@@ -51,3 +51,4 @@ pnpm-debug.log*
 # Prisma
 # =========================
 server/prisma/dev.db
+/generated/prisma
