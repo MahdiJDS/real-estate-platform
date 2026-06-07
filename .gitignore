@@ -9,8 +9,8 @@ server/node_modules/
 # =========================
 # Next.js
 # =========================
-client/.next/
-client/out/
+client/my-app/.next/
+client//my-app/out/
 
 # =========================
 # Backend build
@@ -26,7 +26,7 @@ server/build/
 .env.development
 .env.production
 
-client/.env*
+client/my-app/.env*
 server/.env*
 
 # =========================
