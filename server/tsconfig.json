@@ -1,61 +1,59 @@
 {
-  "compilerOptions": {
-    /* ========================
+   "compilerOptions": {
+      /* ========================
        BASIC SETUP
     ======================== */
-
-    "target": "ES2020",
-    "module": "node16",
-
-    /* ========================
+      "target": "ES2020",
+      "module": "node16",
+      /* ========================
        PROJECT STRUCTURE
     ======================== */
-
-    "rootDir": "./src",
-    "outDir": "./dist",
-
-    /* ========================
+      "rootDir": "./src",
+      "outDir": "./dist",
+      /* ========================
        TYPE CHECKING
     ======================== */
-
-    "strict": true,
-    "noImplicitAny": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-
-    "exactOptionalPropertyTypes": true,
-    "noUncheckedIndexedAccess": true,
-
-    /* ========================
+      "strict": true,
+      "noImplicitAny": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "exactOptionalPropertyTypes": true,
+      "noUncheckedIndexedAccess": true,
+      /* ========================
        MODULE RESOLUTION
     ======================== */
-
-    "moduleResolution": "node16",
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-
-    /* ========================
+      "moduleResolution": "node16",
+      "resolveJsonModule": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      /* ========================
        NODE SUPPORT
     ======================== */
-
-    "types": ["node"],
-    "skipLibCheck": true,
-
-    /* ========================
+      "types": [
+         "node",
+         "express"
+      ],
+      "typeRoots": [
+         "./src/types",
+         "./node_modules/@types"
+      ],
+      "skipLibCheck": true,
+      /* ========================
        OUTPUT OPTIONS
     ======================== */
-
-    "sourceMap": true,
-    "declaration": false,
-
-    /* ========================
+      "sourceMap": true,
+      "declaration": false,
+      /* ========================
        CLEAN IMPORTS
     ======================== */
-
-    "forceConsistentCasingInFileNames": true
-  },
-
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+      "forceConsistentCasingInFileNames": true
+   },
+   "include": [
+      "src/**/*.ts",
+      "src/**/*.d.ts"
+   ],
+   "exclude": [
+      "node_modules",
+      "dist"
+   ]
 }
