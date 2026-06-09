@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { signAccessToken, signRefreshToken } from "../utils/jwt";
 const bcrypt = require('bcrypt')
-import {prisma} from "../config/prisma";
+import { prisma } from "../config/prisma";
 
 export const register = async (req: Request, res: Response) => {
     try {
@@ -27,8 +27,12 @@ export const register = async (req: Request, res: Response) => {
         });
 
         res.status(201).json(user);
-    } catch (err) {
-        res.status(500).json({ message: "Server Error" });
+    } catch (error) {
+        console.log("LOGIN ERROR:", error);
+        res.status(500).json({
+            message: "Server Error",
+            error: error instanceof Error ? error.message : error
+        });
     }
 };
 
@@ -55,11 +59,15 @@ export const login = async (req: Request, res: Response) => {
 
         res.cookie("refreshToken", refreshToken, {
             httpOnly: true,
-            secure: false, 
+            secure: false,
         });
 
         res.json({ accessToken, user });
-    } catch (err) {
-        res.status(500).json({ message: "Server Error" });
+    } catch (error) {
+        console.log("LOGIN ERROR:", error);
+        res.status(500).json({
+            message: "Server Error",
+            error: error instanceof Error ? error.message : error
+        });
     }
 };
