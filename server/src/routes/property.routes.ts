@@ -1,5 +1,6 @@
 import express from "express";
 import { authMiddleware } from "../middlewares/auth.middleware";
+import { uploadSingle } from "../middlewares/upload.middleware";
 import {
     createProperty,
     getAllProperties,
@@ -15,7 +16,7 @@ router.get("/", getAllProperties);
 router.get("/:id", getPropertyById);
 
 
-router.post("/", authMiddleware, createProperty);
+router.post("/", authMiddleware, uploadSingle.single("image"), createProperty);
 router.patch("/:id", authMiddleware, updateProperty);
 router.delete("/:id", authMiddleware, deleteProperty);
 
