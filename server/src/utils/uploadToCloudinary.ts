@@ -1,4 +1,5 @@
-import { v2 as cloudinary, UploadApiResponse } from "cloudinary";
+import { UploadApiResponse } from "cloudinary";
+import cloudinary from "../config/cloudinary"
 import { Readable } from "stream";
 
 export const uploadToCloudinary = (
