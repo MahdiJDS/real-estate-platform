@@ -68,7 +68,7 @@ export const createProperty = async (
 // GET /api/properties
 export const getAllProperties = async (req: Request, res: Response) => {
     try {
-        const { city, minPrice, maxPrice } = req.query;
+        const { city, minPrice, maxPrice, sort } = req.query;
         const where: Prisma.PropertyWhereInput = {};
 
         if (city) {
@@ -82,11 +82,41 @@ export const getAllProperties = async (req: Request, res: Response) => {
             };
         }
 
+        let orderBy: Prisma.PropertyOrderByWithRelationInput = {
+            createdAt: "desc"
+        };
+
+        switch (sort) {
+
+            case "priceAsc":
+                orderBy = {
+                    price: "asc"
+                };
+                break;
+
+            case "priceDesc":
+                orderBy = {
+                    price: "desc"
+                };
+                break;
+
+            case "oldest":
+                orderBy = {
+                    createdAt: "asc"
+                };
+                break;
+
+            case "newest":
+                orderBy = {
+                    createdAt: "desc"
+                };
+                break;
+
+        }
+
         const properties = await prisma.property.findMany({
             where,
-            orderBy: {
-                createdAt: "desc",
-            },
+            orderBy,
             include: {
                 owner: true,
             },
