@@ -47,7 +47,7 @@ export const createProperty = async (
                 bedrooms: Number(bedrooms),
                 bathrooms: Number(bathrooms),
                 ...(imageUrl && {
-                    image: imageUrl,
+                    imageUrl: imageUrl,
                 }),
                 ownerId: userId,
             },
