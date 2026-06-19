@@ -5,6 +5,8 @@ import { cn } from "@/lib/utils";
 import QueryProvider from "@/providers/query-provider";
 import { Toaster } from "react-hot-toast";
 import ThemeProvider from "@/providers/them-provider";
+import Header from "@/components/layout/header";
+import Footer from "@/components/layout/footer"
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -37,7 +39,13 @@ export default function RootLayout({
         <QueryProvider>
           <Toaster />
           <ThemeProvider>
-            {children}
+            <Header />
+
+            <main className="min-h-screen max-w-6xl mx-auto px-4 py-6">
+              {children}
+            </main>
+
+            <Footer />
           </ThemeProvider>
         </QueryProvider>
       </body>
