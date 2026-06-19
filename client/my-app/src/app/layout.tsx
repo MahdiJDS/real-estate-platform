@@ -42,7 +42,7 @@ export default function RootLayout({
           <ThemeProvider>
             <Header />
 
-            <main className="min-h-screen max-w-6xl mx-auto px-4 py-6">
+            <main className="min-h-screen min-w-[90%] mx-auto px-10 py-6">
               {children}
             </main>
 
