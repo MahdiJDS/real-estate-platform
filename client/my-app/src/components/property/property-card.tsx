@@ -5,20 +5,20 @@ type Props = {
   title: string;
   city: string;
   price: number;
-  image: string;
+  imageUrl: string;
 };
 
 export default function PropertyCard({
   title,
   city,
   price,
-  image,
+  imageUrl,
 }: Props) {
   return (
-    <Card className="overflow-hidden p-4 space-y-2 hover:-translate-y-1 hover:shadow-lg transition">
+    <Card className="overflow-hidden w-full p-4 space-y-2 hover:-translate-y-1 hover:shadow-lg transition">
       <div className="relative h-50 w-full">
         <Image
-          src={image}
+          src={imageUrl}
           alt={title}
           fill
           className="rounded-md object-cover"
