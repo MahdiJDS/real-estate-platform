@@ -1,61 +1,33 @@
+import { PropertyFilters } from "@/types/propertyfilters";
 import PropertyCard from "../property/property-card";
+import { LoadingState } from "../shared/loadingState";
+import { ErrorState } from "../shared/errorState";
+import EmptySearch from "../shared/emptySearch";
 
-const mockData = [
-    {
-        id: 1,
-        title: "Modern Apartment",
-        city: "Tehran",
-        price: 120000,
-        image: "https://res.cloudinary.com/dg4gfkxip/image/upload/v1781337885/realnest/in2hgzejbm0ipsrm7kc6.jpg"
-    },
-    {
-        id: 2,
-        title: "Luxury Villa",
-        city: "Shiraz",
-        price: 350000,
-        image: "https://res.cloudinary.com/dg4gfkxip/image/upload/v1781337885/realnest/in2hgzejbm0ipsrm7kc6.jpg"
-    },
-    {
-        id: 3,
-        title: "Studio Room",
-        city: "Isfahan",
-        price: 80000,
-        image: "https://res.cloudinary.com/dg4gfkxip/image/upload/v1781337885/realnest/in2hgzejbm0ipsrm7kc6.jpg"
-    },
-    {
-        id: 4,
-        title: "Studio Room",
-        city: "Isfahan",
-        price: 80000,
-        image: "https://res.cloudinary.com/dg4gfkxip/image/upload/v1781337885/realnest/in2hgzejbm0ipsrm7kc6.jpg"
-    },
-    {
-        id: 5,
-        title: "Studio Room",
-        city: "Isfahan",
-        price: 80000,
-        image: "https://res.cloudinary.com/dg4gfkxip/image/upload/v1781337885/realnest/in2hgzejbm0ipsrm7kc6.jpg"
-    },
-];
 
-export default function FeaturedProperties() {
+type Props = {
+    data: PropertyFilters[];
+    isLoading: boolean;
+    error: Error | null;
+};
+
+export default function FeaturedProperties({ data, isLoading, error }: Props) {
+
+    if (isLoading) return <LoadingState />
+    if (error) return <ErrorState />
+    if(data.length === 0) return <EmptySearch />
+
     return (
-        <section className="space-y-6">
+        <section className="space-y-6 w-full flex justify-content-center flex-col items-center">
 
             <h2 className="text-2xl font-bold">
                 Featured Properties
             </h2>
 
-            <div className="grid md:grid-cols-3 gap-4">
+            <div className="w-full grid md:grid-cols-3 gap-4">
 
-                {mockData.map((item) => (
-                    <PropertyCard
-                        key={item.id}
-                        title={item.title}
-                        city={item.city}
-                        price={item.price}
-                        image={item.image}
-                    />
+                {data.map((p: any) => (
+                    <PropertyCard key={p.id} {...p} />
                 ))}
 
             </div>
