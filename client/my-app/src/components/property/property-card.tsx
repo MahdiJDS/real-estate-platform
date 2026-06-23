@@ -1,7 +1,11 @@
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+
 
 type Props = {
+  id: number;
   title: string;
   city: string;
   price: number;
@@ -9,6 +13,7 @@ type Props = {
 };
 
 export default function PropertyCard({
+  id,
   title,
   city,
   price,
@@ -34,6 +39,11 @@ export default function PropertyCard({
       <p className="font-bold">
         ${price}
       </p>
+      <Button asChild>
+        <Link href={`/properties/${id}`} className="font-bold">
+         show more
+        </Link>
+      </Button>
     </Card>
   );
 }
