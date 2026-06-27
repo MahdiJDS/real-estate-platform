@@ -1,8 +1,8 @@
 import { PropertyFilters } from "@/types/propertyfilters";
 import PropertyCard from "../property/property-card";
-import { LoadingState } from "../shared/loadingState";
 import { ErrorState } from "../shared/errorState";
 import EmptySearch from "../shared/emptySearch";
+import SkeletonCard from "../shared/property-skeleton";
 
 
 type Props = {
@@ -13,7 +13,7 @@ type Props = {
 
 export default function FeaturedProperties({ data, isLoading, error }: Props) {
 
-    if (isLoading) return <LoadingState />
+    if (isLoading) return <SkeletonCard />
     if (error) return <ErrorState />
     if(data.length === 0) return <EmptySearch />
 
