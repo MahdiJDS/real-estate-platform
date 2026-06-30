@@ -1,27 +1,26 @@
 "use client";
 
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createProperty } from "@/services/createProperty.service";
-import { useQueryClient } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 export function useCreateProperty() {
-
-    const queryClient =
-        useQueryClient();
+    const queryClient = useQueryClient();
 
     return useMutation({
-
         mutationFn: createProperty,
 
-        onSuccess() {
+        onSuccess: () => {
+            toast.success("Property created successfully");
 
             queryClient.invalidateQueries({
-
                 queryKey: ["properties"],
             });
-
         },
 
+        onError: (error) => {
+            toast.error("Failed to create property");
+            console.error(error);
+        },
     });
-
 }
