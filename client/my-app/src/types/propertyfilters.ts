@@ -1,5 +1,5 @@
 export type PropertyFilters = {
-  id:number;
+  id?:number;
   city?: string;
   minPrice?: number;
   maxPrice?: number;
