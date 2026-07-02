@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  DehydratedState,
   HydrationBoundary,
   QueryClient,
   QueryClientProvider,
@@ -12,7 +13,7 @@ const queryClient = new QueryClient();
 
 type Props = {
   children: ReactNode;
-  dehydratedState: any
+  dehydratedState?: DehydratedState
 };
 
 export default function QueryProvider({
