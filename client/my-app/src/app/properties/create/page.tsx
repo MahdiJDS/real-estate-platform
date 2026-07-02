@@ -1,0 +1,30 @@
+import CreatePropertyForm from "@/components/property/create-property-form";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+
+export default function CreatePropertyPage() {
+  return (
+    <div className="flex items-center justify-center px-4 py-6 ">
+      
+      <Card className="w-full max-w-2xl max-h-[80vh] overflow-hidden shadow-2xl rounded-2xl">
+        
+        <CardHeader className="py-4 space-y-1">
+          <CardTitle className="m-auto text-2xl font-bold">
+            Create Property
+          </CardTitle>
+
+          <p className="m-auto text-xs text-muted-foreground">
+            Add your property details quickly
+          </p>
+        </CardHeader>
+
+        <Separator />
+
+        <CardContent className="py-4 overflow-y-auto">
+          <CreatePropertyForm />
+        </CardContent>
+
+      </Card>
+    </div>
+  );
+}
