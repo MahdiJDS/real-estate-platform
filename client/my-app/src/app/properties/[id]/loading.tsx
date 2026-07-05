@@ -1,4 +1,4 @@
-import SkeletonCard from "@/components/shared/property-skeleton";
+import SkeletonCard from "@/components/shared/loadingState";
 
 export default function Loading() {
     return <SkeletonCard />;

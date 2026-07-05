@@ -2,7 +2,7 @@ import { PropertyFilters } from "@/types/propertyfilters";
 import PropertyCard from "../property/property-card";
 import { ErrorState } from "../shared/errorState";
 import EmptySearch from "../shared/emptySearch";
-import SkeletonCard from "../shared/property-skeleton";
+import SkeletonCard from "../shared/loadingState";
 
 
 type Props = {
