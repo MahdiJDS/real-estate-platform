@@ -1,13 +1,16 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { ReactNode } from "react";
 
 type Props = {
     isPending: boolean;
+    children: ReactNode
 };
 
 export function SubmitButton({
     isPending,
+    children
 }: Props) {
     return (
         <Button
@@ -15,7 +18,7 @@ export function SubmitButton({
             className="w-full"
             disabled={isPending}
         >
-            {isPending ? "Loading..." : "Create Property"}
+            {isPending ? "Loading..." : children}
         </Button>
     );
 }
