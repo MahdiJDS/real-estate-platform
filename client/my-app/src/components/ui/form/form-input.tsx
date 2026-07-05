@@ -9,6 +9,7 @@ type Props<T extends FieldValues> = {
     name: FieldPath<T>;
     label: string;
     placeholder?: string;
+    type?: React.HTMLInputTypeAttribute;
 };
 
 export function InputField<T extends FieldValues>({
@@ -16,6 +17,7 @@ export function InputField<T extends FieldValues>({
     name,
     label,
     placeholder,
+    type = "text",
 }: Props<T>) {
     const { field, fieldState } = useController({
         control,
@@ -29,6 +31,7 @@ export function InputField<T extends FieldValues>({
 
                 <Input
                     {...field}
+                    type={type}
                     value={field.value ?? ""}
                     placeholder={placeholder}
                 />
