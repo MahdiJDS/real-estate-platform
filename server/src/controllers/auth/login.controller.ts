@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { signAccessToken, signRefreshToken, verifyRefreshToken } from "../../utils/jwt";
+import { signAccessToken, signRefreshToken } from "../../utils/jwt";
 const bcrypt = require('bcrypt')
 import { prisma } from "../../config/prisma";
 
