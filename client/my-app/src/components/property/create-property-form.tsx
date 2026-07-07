@@ -7,7 +7,7 @@ import { createPropertySchema, CreatePropertyForm } from "@/schema/createPropert
 import { useCreateProperty } from "@/hook/use-create-property";
 
 import { InputField, NumberField, TextareaField, FileField } from "@/components/ui/form/index";
-import { Button } from "@/components/ui/button";
+import { SubmitButton } from "../ui/form/submit-button";
 
 export default function CreatePropertyForms() {
     const { mutate, isPending } = useCreateProperty();
@@ -91,9 +91,11 @@ export default function CreatePropertyForms() {
                 label="Property Image"
             />
 
-            <Button type="submit" disabled={isPending} className="w-full">
-                {isPending ? "Creating..." : "Create Property"}
-            </Button>
+            <SubmitButton
+                isPending={isPending}
+            >
+                Create Property
+            </SubmitButton>
         </form>
     );
 }
