@@ -11,10 +11,16 @@ import { Button } from "@/components/ui/button";
 import { navItems } from "@/constants/nav";
 import Link from "next/link";
 import ThemeToggle from "../shared/theme-toggle";
+import AuthButton from "../shared/authButton";
+import { useState } from "react";
 
 export default function MobileMenu() {
+    const [open, setOpen] = useState(false);
     return (
-        <Sheet>
+        <Sheet
+            open={open}
+            onOpenChange={setOpen}
+        >
 
             <SheetTrigger asChild>
                 <Button variant="outline" className="md:hidden">
@@ -32,6 +38,7 @@ export default function MobileMenu() {
                     <Link
                         key={item.href}
                         href={item.href}
+                        onClick={() => setOpen(false)}
                         className="text-sm hover:translate-x-1 hover:text-blue-200 duration-300"
                     >
                         {item.label}
