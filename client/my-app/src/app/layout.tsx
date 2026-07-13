@@ -7,6 +7,7 @@ import { Toaster } from "react-hot-toast";
 import ThemeProvider from "@/providers/them-provider";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer"
+import { AuthProvider } from "@/providers/AuthProvider";
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -37,18 +38,18 @@ export default function RootLayout({
       className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable)}
     >
       <body className="min-h-full flex flex-col">
-        <QueryProvider>
-          <Toaster />
-          <ThemeProvider>
-            <Header />
-
-            <main className="min-h-screen min-w-[90%] mx-auto px-10 py-6">
-              {children}
-            </main>
-
-            <Footer />
-          </ThemeProvider>
-        </QueryProvider>
+        <ThemeProvider>
+          <QueryProvider>
+            <AuthProvider>
+              <Toaster />
+              <Header />
+              <main className="min-h-screen min-w-[90%] mx-auto px-10 py-6">
+                {children}
+              </main>
+              <Footer />
+            </AuthProvider>
+          </QueryProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
