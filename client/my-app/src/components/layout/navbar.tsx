@@ -3,6 +3,7 @@ import Link from "next/link";
 import { navItems } from "@/constants/nav";
 import ThemeToggle from "../shared/theme-toggle";
 import { Button } from "@/components/ui/button";
+import AuthButton from "../shared/authButton";
 
 export default function Navbar() {
     return (
@@ -21,13 +22,7 @@ export default function Navbar() {
             <ThemeToggle />
 
             <div className="flex items-center gap-2">
-                <Button variant="outline" size="sm">
-                    Login
-                </Button>
-
-                <Button size="sm">
-                    Register
-                </Button>
+                <AuthButton />
             </div>
 
         </nav>
