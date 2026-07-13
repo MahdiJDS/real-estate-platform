@@ -23,7 +23,7 @@ export default function MobileMenu() {
         >
 
             <SheetTrigger asChild>
-                <Button variant="outline" className="md:hidden">
+                <Button variant="outline" className="md:hidden hover:cursor-pointer">
                     <Menu />
                 </Button>
             </SheetTrigger>
@@ -44,7 +44,11 @@ export default function MobileMenu() {
                         {item.label}
                     </Link>
                 ))}
-                <ThemeToggle/>
+                <ThemeToggle />
+
+                <AuthButton
+                    onNavigate={() => setOpen(false)}
+                />
 
             </SheetContent>
 
