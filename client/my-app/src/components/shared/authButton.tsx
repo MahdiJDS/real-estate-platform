@@ -6,7 +6,13 @@ import { Button } from "@/components/ui/button";
 import { useAuthStore } from "@/store/auth.store";
 import { useLogout } from "@/features/auth/hooks/useLogout";
 
-export default function AuthButton() {
+type Props = {
+    onNavigate?: () => void;
+};
+
+export default function AuthButton({
+    onNavigate,
+}: Props) {
 
     const accessToken = useAuthStore(
         (state) => state.accessToken
@@ -19,23 +25,33 @@ export default function AuthButton() {
         return (
 
             <div className="flex gap-2">
+
                 <Button
                     asChild
                     variant="outline"
                     size="sm"
                 >
-                    <Link href="/properties/create">
+                    <Link
+                        href="/properties/create"
+                        onClick={onNavigate}
+                    >
                         Create
                     </Link>
                 </Button>
 
                 <Button
                     size="sm"
-                    onClick={() => mutate()}
                     disabled={isPending}
+                    onClick={() => {
+                        onNavigate?.();
+                        mutate();
+                    }}
                 >
-                    {isPending ? "Logging out..." : "Logout"}
+                    {isPending
+                        ? "Logging out..."
+                        : "Logout"}
                 </Button>
+
             </div>
 
         );
@@ -51,7 +67,10 @@ export default function AuthButton() {
                 variant="outline"
                 size="sm"
             >
-                <Link href="/login">
+                <Link
+                    href="/login"
+                    onClick={onNavigate}
+                >
                     Login
                 </Link>
             </Button>
@@ -60,7 +79,10 @@ export default function AuthButton() {
                 asChild
                 size="sm"
             >
-                <Link href="/register">
+                <Link
+                    href="/register"
+                    onClick={onNavigate}
+                >
                     Register
                 </Link>
             </Button>
