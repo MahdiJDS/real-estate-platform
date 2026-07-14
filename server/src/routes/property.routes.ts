@@ -19,7 +19,7 @@ router.get("/my", authMiddleware, getMyProperties);
 
 router.get("/:id", getPropertyById);
 
-router.patch("/:id", authMiddleware, updateProperty);
+router.patch("/:id", authMiddleware, uploadSingle.single("image"), updateProperty);
 router.delete("/:id", authMiddleware, deleteProperty);
 
 export default router;
