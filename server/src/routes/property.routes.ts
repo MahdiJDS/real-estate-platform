@@ -12,12 +12,13 @@ const router = express.Router();
 
 
 router.get("/", getAllProperties);
-router.get("/:id", getPropertyById);
+
+router.post("/", authMiddleware, uploadSingle.single("image"), createProperty);
 
 router.get("/my", authMiddleware, getMyProperties);
 
+router.get("/:id", getPropertyById);
 
-router.post("/", authMiddleware, uploadSingle.single("image"), createProperty);
 router.patch("/:id", authMiddleware, updateProperty);
 router.delete("/:id", authMiddleware, deleteProperty);
 
