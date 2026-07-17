@@ -1,19 +1,25 @@
 "use client"
 import Link from "next/link";
-import { navItems } from "@/constants/nav";
 import ThemeToggle from "../shared/theme-toggle";
-import { Button } from "@/components/ui/button";
 import AuthButton from "../shared/authButton";
+import { useAuthStore } from "@/store/auth.store";
+import { getNavigation } from "@/config/navigation";
 
 export default function Navbar() {
+    const accessToken = useAuthStore(
+        (state) => state.accessToken
+    );
+
+    const navigation = getNavigation(
+        !!accessToken
+    );
     return (
         <nav className="hidden md:flex items-center gap-6">
 
-            {navItems.map((item) => (
+            {navigation.map((item) => (
                 <Link
                     key={item.href}
                     href={item.href}
-                    className="text-sm hover:opacity-70 transition"
                 >
                     {item.label}
                 </Link>
