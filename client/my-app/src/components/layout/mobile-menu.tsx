@@ -8,14 +8,23 @@ import {
 
 import { Menu } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import { navItems } from "@/constants/nav";
 import Link from "next/link";
 import ThemeToggle from "../shared/theme-toggle";
 import AuthButton from "../shared/authButton";
 import { useState } from "react";
+import { useAuthStore } from "@/store/auth.store";
+import { getNavigation } from "@/config/navigation";
 
 export default function MobileMenu() {
     const [open, setOpen] = useState(false);
+
+    const accessToken = useAuthStore(
+        (state) => state.accessToken
+    );
+
+    const navigation = getNavigation(
+        !!accessToken
+    );
     return (
         <Sheet
             open={open}
@@ -34,16 +43,15 @@ export default function MobileMenu() {
                     RealNest
                 </div>
 
-                {navItems.map((item) => (
+                {navigation.map((item) => (
                     <Link
                         key={item.href}
                         href={item.href}
-                        onClick={() => setOpen(false)}
-                        className="text-sm hover:translate-x-1 hover:text-blue-200 duration-300"
                     >
                         {item.label}
                     </Link>
                 ))}
+
                 <ThemeToggle />
 
                 <AuthButton
