@@ -2,6 +2,7 @@
 
 import {
     Sheet,
+    SheetClose,
     SheetContent,
     SheetTrigger,
 } from "@/components/ui/sheet";
@@ -44,12 +45,16 @@ export default function MobileMenu() {
                 </div>
 
                 {navigation.map((item) => (
-                    <Link
+                    <SheetClose
                         key={item.href}
-                        href={item.href}
+                        asChild
                     >
-                        {item.label}
-                    </Link>
+                        <Button asChild variant={"link"}>
+                            <Link href={item.href}>
+                                {item.label}
+                            </Link>
+                        </Button>
+                    </SheetClose>
                 ))}
 
                 <ThemeToggle />
