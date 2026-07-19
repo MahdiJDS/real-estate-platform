@@ -1,8 +1,12 @@
-import { Card } from "@/components/ui/card";
-import Image from "next/image";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+"use client";
 
+import Link from "next/link";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { MapPin, ArrowRight } from "lucide-react";
+
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 type Props = {
   id: number;
@@ -20,30 +24,90 @@ export default function PropertyCard({
   imageUrl,
 }: Props) {
   return (
-    <Card className="overflow-hidden w-full p-4 space-y-2 hover:-translate-y-1 hover:shadow-lg transition">
-      <div className="relative h-50 w-full">
-        <Image
-          src={imageUrl}
-          alt={title}
-          fill
-          className="rounded-md object-cover"
-        />
-      </div>
+    <motion.div
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{
+        duration: 0.35,
+        ease: "easeOut",
+      }}
+      whileHover={{
+        y: -6,
+      }}
+    >
+      <Card className="group overflow-hidden rounded-2xl border bg-background p-0 transition-shadow hover:shadow-2xl">
 
-      <h3 className="font-semibold">{title}</h3>
+        <div className="relative overflow-hidden">
 
-      <p className="text-sm text-muted-foreground">
-        {city}
-      </p>
+          <Link href={`/properties/${id}`}>
 
-      <p className="font-bold">
-        ${price}
-      </p>
-      <Button asChild>
-        <Link href={`/properties/${id}`} className="font-bold">
-         show more
-        </Link>
-      </Button>
-    </Card>
+            <div className="relative aspect-[4/3]">
+
+              <Image
+                src={imageUrl}
+                alt={title}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+
+            </div>
+
+          </Link>
+
+
+
+        </div>
+
+        <div className="space-y-4 p-5">
+
+          <div>
+
+            <h3 className="line-clamp-1 text-xl font-semibold">
+              {title}
+            </h3>
+
+            <div className="mt-2 flex items-center gap-2 text-muted-foreground">
+
+              <MapPin className="h-4 w-4" />
+
+              <span>{city}</span>
+
+            </div>
+
+          </div>
+
+          <div className="flex items-center justify-between">
+
+            <div>
+
+              <p className="text-2xl font-bold text-primary">
+                ${price.toLocaleString()}
+              </p>
+
+              <p className="text-xs text-muted-foreground">
+                Total Price
+              </p>
+
+            </div>
+
+            <Button
+              asChild
+              className="gap-2"
+            >
+              <Link href={`/properties/${id}`}>
+                Details
+                <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+              </Link>
+            </Button>
+
+          </div>
+
+        </div>
+
+      </Card>
+    </motion.div>
   );
 }
