@@ -14,10 +14,6 @@ import {
     CardContent,
 } from "@/components/ui/card";
 
-// import {
-//     Avatar,
-//     AvatarFallback,
-// } from "@/components/ui/avatar";
 
 import { Button } from "@/components/ui/button";
 
@@ -29,8 +25,6 @@ export default function PropertySidebar({
     property,
 }: Props) {
 
-    const initials =
-        `${property.owner.firstName[0]}${property.owner.lastName[0]}`;
 
     return (
 
@@ -68,14 +62,6 @@ export default function PropertySidebar({
 
                     <div className="flex items-center gap-4">
 
-                        {/* <Avatar className="size-14">
-
-                            <AvatarFallback className="text-lg font-bold">
-                                {initials}
-                            </AvatarFallback>
-
-                        </Avatar> */}
-
                         <div>
 
                             <h3 className="font-semibold text-lg">
@@ -107,10 +93,15 @@ export default function PropertySidebar({
 
 
                         <Button
+                            asChild
                             className="w-full gap-2"
                         >
-                            <Mail className="size-4" />
-                            Send Email
+                            <a
+                                href={`mailto:${property.owner.email}`}
+                            >
+                                <Mail className="size-4" />
+                                Send Email
+                            </a>
                         </Button>
 
                         <Button
