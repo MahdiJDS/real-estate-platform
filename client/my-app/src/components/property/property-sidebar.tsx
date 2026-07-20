@@ -16,6 +16,7 @@ import {
 
 
 import { Button } from "@/components/ui/button";
+import {handleShare} from "../shared/handleShare";
 
 type Props = {
     property: Property;
@@ -107,6 +108,7 @@ export default function PropertySidebar({
                         <Button
                             variant="ghost"
                             className="w-full gap-2"
+                            onClick={() => handleShare(property)}
                         >
                             <Share2 className="size-4" />
                             Share Property
