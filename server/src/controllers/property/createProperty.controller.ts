@@ -41,9 +41,17 @@ export const createProperty = async (
                 price: Number(price),
                 city,
                 address,
-                area: Number(area),
-                bedrooms: Number(bedrooms),
-                bathrooms: Number(bathrooms),
+                ...(area !== undefined && {
+                    area: Number(area),
+                }),
+
+                ...(bedrooms !== undefined && {
+                    bedrooms: Number(bedrooms),
+                }),
+
+                ...(bathrooms !== undefined && {
+                    bathrooms: Number(bathrooms),
+                }),
                 ...(imageUrl && {
                     imageUrl: imageUrl,
                 }),
