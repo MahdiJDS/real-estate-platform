@@ -1,19 +1,19 @@
 export interface CreatePropertyDto {
     title: string;
 
-    description: string;
+    description?: string;
 
     city: string;
 
-    address: string;
+    address?: string;
 
     price: number;
 
-    area: number;
+    area?: number;
 
-    bedrooms: number;
+    bedrooms?: number;
 
-    bathrooms: number;
+    bathrooms?: number;
 
-    image: File | null;
+    image?: File | null;
 }
