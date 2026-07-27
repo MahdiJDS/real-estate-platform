@@ -1,15 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { Pencil, Trash2, MapPin, BedDouble, Bath, Square } from "lucide-react";
+import {  MapPin, BedDouble, Bath, Square } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { useDeleteProperty } from "../hooks/useDeleteProperty";
 import { DeletePropertyDialog } from "./DeletePropertyDialog";
 import { EditPropertyDialog } from "./EditPropertyDialog";
-import { CreatePropertyForm } from "@/schema/createProperty.schema";
 import { Property } from "@/types/property.type";
 
 type Props = {
@@ -23,7 +19,7 @@ export function MyPropertyCard({ property }: Props) {
             <div className="relative h-56 w-full">
 
                 <Image
-                    src={property.imageUrl || "/images/property-placeholder.jpg"}
+                    src={property.imageUrl ?? "/file.jpg"}
                     alt={property.title}
                     fill
                     className="object-cover"

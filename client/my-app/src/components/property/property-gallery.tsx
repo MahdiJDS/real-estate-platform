@@ -26,10 +26,10 @@ export default function PropertyGallery({
             }}
             className="group relative overflow-hidden rounded-3xl shadow-xl"
         >
-            <div className="relative aspect-[16/8] w-full">
+            <div className="relative aspect-16/8 w-full">
 
                 <Image
-                    src={imageUrl ?? "/placeholder.jpg"}
+                    src={imageUrl ?? "/file.svg"}
                     alt="Property"
                     fill
                     priority
@@ -37,7 +37,7 @@ export default function PropertyGallery({
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/30 via-transparent to-transparent" />
 
                 {/* Scroll Indicator */}
 

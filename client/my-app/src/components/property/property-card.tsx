@@ -42,16 +42,16 @@ export default function PropertyCard({
 
           <Link href={`/properties/${id}`}>
 
-            <div className="relative aspect-[4/3]">
+            <div className="relative aspect-4/3">
 
               <Image
-                src={imageUrl}
+                src={imageUrl ?? "/file.svg"}
                 alt={title}
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
 
             </div>
 
