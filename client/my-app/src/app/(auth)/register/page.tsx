@@ -12,12 +12,9 @@ export default function RegisterPage() {
 
                 <CardHeader className="py-4 space-y-1">
                     <CardTitle className="m-auto text-2xl font-bold">
-                        Create Property
+                        Join Us
                     </CardTitle>
 
-                    <p className="m-auto text-xs text-muted-foreground">
-                        Add your property details quickly
-                    </p>
                 </CardHeader>
 
                 <Separator />
