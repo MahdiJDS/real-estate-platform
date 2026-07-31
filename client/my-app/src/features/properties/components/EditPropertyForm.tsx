@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
     createPropertySchema,
     CreatePropertyForm,
+    CreatePropertyInput,
 } from "@/schema/createProperty.schema";
 
 
@@ -42,7 +43,11 @@ export default function EditPropertyForm({
 
 
 
-    const form = useForm<CreatePropertyForm>({
+    const form = useForm<
+        CreatePropertyInput,
+        unknown,
+        CreatePropertyForm
+    >({
 
         resolver: zodResolver(createPropertySchema),
 
