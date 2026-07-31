@@ -3,7 +3,11 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { createPropertySchema, CreatePropertyForm } from "@/schema/createProperty.schema";
+import {
+    createPropertySchema,
+    CreatePropertyInput,
+    CreatePropertyForm,
+} from "@/schema/createProperty.schema";
 import { useCreateProperty } from "@/hook/use-create-property";
 
 import { InputField, NumberField, TextareaField, FileField } from "@/components/ui/form/index";
@@ -12,7 +16,11 @@ import { SubmitButton } from "../ui/form/submit-button";
 export default function CreatePropertyForms() {
     const { mutate, isPending } = useCreateProperty();
 
-    const form = useForm<CreatePropertyForm>({
+    const form = useForm<
+        CreatePropertyInput,
+        unknown,
+        CreatePropertyForm
+    >({
         resolver: zodResolver(createPropertySchema),
         defaultValues: {
             title: "",
